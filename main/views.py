@@ -8,7 +8,7 @@ def home(request):
 def imageUpload(request):
     if request.method == 'POST':
         file = request.FILES['file']
-        filename = "static/AutoCaption/css/media/" + str(file.name)
+        filename = "static/AutoCaption/css/media/" + file.name
         with open(filename, 'wb') as dest:
             for chunk in file.chunks():
                 dest.write(chunk)
