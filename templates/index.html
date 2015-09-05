@@ -14,8 +14,8 @@
   	<h1 class="margin-top-lg"> auto<span class="highlight">Caption</span> </h1>
     <form class="form margin-bottom-sm margin-top-sm" method="POST" action="{% url 'main:urlUpload' %}">
       {% csrf_token %}
-      <input class="input-text margin-top-lg" name="url" id="url" placeholder="Paste an image url..." autofocus>
-      <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label>
+      <input class="input-text margin-top-lg" name="url" id="url" placeholder="Paste an image url" autofocus>
+      <label for="url" class="" rel="tooltip" title="url"></label>
       <input type="submit" hidden>
     </form>
     <hr class="margin-bottom-lg">
