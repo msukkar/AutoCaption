@@ -1,5 +1,5 @@
 html {
-  background: url(img/bg5.jpg) no-repeat center center fixed;
+  background: url(img/bg3.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,7 +13,7 @@ body {
 }
 
 .see-thru {
-  background-color: rgba(0,0,0, .5);
+  background-color: rgba(0,0,0, .7);
   position:fixed;
   padding:0;
   margin:0;
@@ -30,7 +30,18 @@ h1 {
 	font-family: 'Signika', sans-serif;
 	font-size: 80px;
   font-weight: 400;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: rgba(255,255,255,.7);
+  text-align: center;
+  font-family: 'Signika', sans-serif;
+	font-size: 30px;
+  font-weight: 400;
+  margin-top: 0px;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 .highlight {
@@ -48,7 +59,6 @@ input {
   text-align: center;
   background-color: rgba(0,0,0,.5);
   margin-top: 2%;
-  outline:rgba(255,255,255,.5) solid 1px;
 }
 
 input, select, textarea{
@@ -60,7 +70,7 @@ input, select, textarea{
 input:focus, textarea:focus, input:hover, textarea:hover {
 	border: none;
 	outline: #2296BD solid 1px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.3);
 }
 
 ::-webkit-input-placeholder {
@@ -106,7 +116,7 @@ hr {
     padding: 150px;
     background:none;
     display:inline-block;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.5);
 }
 
 .fileUpload input.upload {
@@ -114,11 +124,12 @@ hr {
     top: 0;
     right: 0;
     margin: 0;
-    padding: 100px;
+    padding: 150px;
     font-size: 20px;
     cursor: pointer;
     opacity: 0;
     width:100%;
+    height: 100%;
     filter: alpha(opacity=0);
 }
 
