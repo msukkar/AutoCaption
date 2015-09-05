@@ -39,7 +39,7 @@ input {
 	font-size: 38px;
 	width: 390px;
 	margin: 0px;
-	padding: 15px;
+	padding-bottom: 15px;
 }
 
 input, select, textarea{
@@ -120,4 +120,8 @@ hr {
   color: rgba(255,255,255, .5);
   font-family: 'Lora', serif;
 	font-size: 38px;
+}
+
+.container {
+  margin-top: 5%;
 }
