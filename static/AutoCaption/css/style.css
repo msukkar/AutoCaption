@@ -8,4 +8,7 @@ h1 {
 
 .dropzone {
   border-style: dashed !important;
+  width: 800px;
+  height: 600px;
+  margin: auto;
 }
