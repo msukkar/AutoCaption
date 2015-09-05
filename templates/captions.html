@@ -14,13 +14,26 @@
     <div class="imgContainer">
       <img src="{{ image }}" class="img-responsive img-thumbnail margin-top-sm">
     </div>
-  <!--	<form action="{% url 'main:imageUpload' %}" method="POST" id="my-awesome-dropzone">
-      {% csrf_token %}
-    </form> -->
+    <div class="tags margin-top-sm">
+      <ul class="tags__list-of-tags">
+      </ul>
+      <div class="input-and-caption">
+        <form class="tags__inputs">
+          <input type="text" autocomplete="off" autocorrect="off" placeholder="Type in a photo tag" autocapitalize="off" spellcheck="false" class="tag-input" id="tag-input-box" required="" autofocus="true">
+        </form>
+        <button class="btn btn-default caption-btn">Caption!</button>
+      </div>
+    </div>
+    <div class="loading">
+    </div>
+    <div class="caption hidden">
+      <span>This is the caption</span>
+    </div>
 
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	  <!--<script src="{% static "AutoCaption/js/dropzone.js" %}"></script>-->
   	<script src="{% static "AutoCaption/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "AutoCaption/js/tags.js" %}"></script>
   	<!--<script src="{% static "AutoCaption/js/app.js" %}"></script>-->
   </body>
 </html>
