@@ -4,19 +4,20 @@
     <title> AutoCaption </title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="{% static "AutoCaption/css/dropzone.css" %}">
   </head>
   <body>
   	<h1> AutoCaption </h1>
+  	<form action="{% url 'main:imageUpload' %}" method="POST"
+      class="dropzone dz-clickable"
+      id="my-awesome-dropzone">
+      {% csrf_token %}
+    </form>
 
-  	<form action="/upload"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
-
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="{% static "AutoCaption/js/dropzone.js" %}"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+	  <script src="{% static "AutoCaption/js/dropzone.js" %}"></script>
+  	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
   	<script src="{% static "AutoCaption/js/app.js" %}"></script>
   </body>
 </html>
