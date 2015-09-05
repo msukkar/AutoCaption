@@ -13,21 +13,23 @@
   </head>
   <body>
   	<h1> auto<span class="highlight">Caption</span> </h1>
-    <form class="form" method="POST" action="{% url 'main:urlUpload' %}">
-      {% csrf_token %}
-      <input class="input-text" name="url" id="url" placeholder="Paste an image url..." autofocus>
-      <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label>
-      <input type="submit" hidden>
-    </form>
-    <hr>
-    <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="fileUpload btn btn-primary">
-        <span> or drag/drop an   <i class="fa fa-picture-o"></i> to caption! </span>
-        <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
-      </div>
-      <input type="submit" hidden>
-    </form>
+    <div class="container"> 
+      <form class="form" method="POST" action="{% url 'main:urlUpload' %}">
+        {% csrf_token %}
+        <input class="input-text" name="url" id="url" placeholder="Paste an image url" autofocus>
+        <!-- <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label> -->
+        <input type="submit" hidden>
+      </form>
+      <hr>
+      <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="fileUpload btn btn-primary">
+          <span> drag/drop a   <i class="fa fa-picture-o"></i> to caption! </span>
+          <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
+        </div>
+        <input type="submit" hidden>
+      </form>
+    </div>
 
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
