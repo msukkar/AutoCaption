@@ -110,7 +110,7 @@ hr {
 }
 
 .imgContainer img{
-  height: 300px;
+  max-height: 400px;
 }
 
 .img-thumbnail {
@@ -144,6 +144,7 @@ hr {
     background-color: azure;
     border-radius: 4px;
     padding: 10px;
+    height: 36px;
     margin-top: 10px;
     margin-right: 10px;
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 2px 0px;
@@ -173,7 +174,7 @@ hr {
 
 .tags__list-of-tags {
     position: relative;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 0px 0px;
     display: flex;
@@ -181,7 +182,7 @@ hr {
 }
 
 .tags__inputs {
-    max-width: 400px;
+    max-width: 500px;
     overflow: hidden;
 }
 

@@ -16,6 +16,14 @@
     </div>
     <div class="tags margin-top-sm">
       <ul class="tags__list-of-tags">
+        {% if tags %}
+          {% for tag in tags %}
+            <li class="tag__container">
+              <a href="#" class="btn glyphicon glyphicon-remove-circle"></a>
+              <span class="tag-text">{{tag}}</span>
+            </li>
+          {% endfor %}
+        {% endif %}
       </ul>
       <div class="input-and-caption">
         <form class="tags__inputs">
