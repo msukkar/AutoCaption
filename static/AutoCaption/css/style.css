@@ -57,6 +57,8 @@ h1 {
 
 input, select, textarea{
     color: #2296BD !important;
+    outline: none;
+    border; none;
 }
 
 input:focus, textarea:focus {
@@ -208,9 +210,9 @@ hr {
 
 .tags__inputs input {
   background-color: transparent;
-  border: 0px solid;
-  height: 20px;
-  color: #CCC;
+  border: transparent;
+/*  border: 0px solid;
+  color: #CCC;*/
 }
 
 .hidden {
