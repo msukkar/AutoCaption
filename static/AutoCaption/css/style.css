@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	background-color: rgba(0,0,0, .8);
+	background-color: rgba(0,0,0, .85);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -37,9 +37,9 @@ input {
 	border: none;
 	font-family: 'Lora', serif;
 	font-size: 38px;
-	width: 390px;
+	width: 320px;
 	margin: 0px;
-	padding-bottom: 15px;
+	padding-bottom: 0px;
 }
 
 input, select, textarea{

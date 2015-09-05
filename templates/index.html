@@ -24,7 +24,7 @@
       <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="fileUpload btn btn-primary">
-          <span> or drag/drop an   <i class="fa fa-picture-o"></i> to caption! </span>
+          <span> drag/drop a   <i class="fa fa-picture-o"></i> to caption! </span>
           <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
         </div>
         <input type="submit" hidden>
