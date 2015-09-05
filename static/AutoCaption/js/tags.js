@@ -13,7 +13,7 @@ ready = function() {
 
     $(document).on('click', '.caption-btn', function() {
         $('.tags').addClass('hidden', 400);
-        $('.loading').show();
+        $('.loading').removeClass('hidden');
         $('.dropzone').hide();
         $.ajax({
             url: '../main',
@@ -22,7 +22,7 @@ ready = function() {
                 $('.caption').removeClass('hidden', 400);
             },
             complete: function() {
-                $('.loading').hide();
+                $('.loading').addClass('hidden');
               }
           });
     });
