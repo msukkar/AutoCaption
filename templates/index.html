@@ -5,31 +5,34 @@
     {% load staticfiles %}
     <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css">
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
-    <link rel="stylesheet" href="{% static "AutoCaption/css/bootstrap.min.css" %}">
+
     <!--<link rel="stylesheet" href="{% static "AutoCaption/css/dropzone.css" %}">-->
   </head>
   <body>
-  	<h1 class="margin-top-lg"> auto<span class="highlight">Caption</span> </h1>
-    <form class="form margin-bottom-sm margin-top-sm" method="POST" action="{% url 'main:urlUpload' %}">
-      {% csrf_token %}
-      <input class="input-text margin-top-lg" name="url" id="url" placeholder="Paste an image url" autofocus>
-      <label for="url" class="" rel="tooltip" title="url"></label>
-      <input type="submit" hidden>
-    </form>
-    <hr class="margin-bottom-lg">
-    <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="fileUpload btn btn-primary">
-        <span> or drag/drop an   <i class="fa fa-picture-o"></i> to caption! </span>
-        <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
-      </div>
-      <input type="submit" hidden>
-    </form>
+  	<h1> auto<span class="highlight">Caption</span> </h1>
+    <div class="container"> 
+      <form class="form" method="POST" action="{% url 'main:urlUpload' %}">
+        {% csrf_token %}
+        <input class="input-text" name="url" id="url" placeholder="Paste an image url" autofocus>
+        <!-- <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label> -->
+        <input type="submit" hidden>
+      </form>
+      <hr>
+      <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="fileUpload btn btn-primary">
+          <span> drag/drop a   <i class="fa fa-picture-o"></i> to caption! </span>
+          <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
+        </div>
+        <input type="submit" hidden>
+      </form>
+    </div>
 
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  	<script src="{% static "AutoCaption/js/bootstrap.min.js" %}"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
     <script type="text/javascript">
       document.getElementById("file").onchange = function() {
         document.getElementById("imageUpload").submit();
