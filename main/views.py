@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, render_to_r
 from django.views.decorators.csrf import csrf_protect
 import requests
 import json
+import urllib
 from django.conf import settings
 
 def home(request):
@@ -15,9 +16,9 @@ def imageUpload(request):
         with open(filename, 'wb') as dest:
             for chunk in file.chunks():
                 dest.write(chunk)
-        tag(file)
+        tags = tag(filename)
         filename = "/" + filename;
-        return render(request, 'captions.html', {'image': filename})
+        return render(request, 'captions.html', {'image': filename, 'tags': tags})
     return redirect('main:home')
 
 
@@ -25,13 +26,18 @@ def imageUpload(request):
 def urlUpload(request):
     if request.method == 'POST':
         url = request.POST.get('url')
-        return render(request, 'captions.html', {'image': url})
+        file = urllib.URLopener()
+        filename = "static/AutoCaption/css/media/temp.jpg"
+        file.retrieve(url, filename)
+        tags = tag(filename)
+        print tags
+        filename = "/" +filename
+        return render(request, 'captions.html', {'image': filename, 'tags':tags})
     return redirect('main:home')
 
-def tag(file):
+def tag(filename):
        num_results = 3
        url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
-       filename = "media/" + str(file.name)
        fileobject =  open(filename) 
        payload = {"img_File": fileobject}
        r = requests.post(url, files=payload, auth=('d5464b55-d77e-4e73-b43c-67047f778cca', 'HxdJIHObW3ON'))
