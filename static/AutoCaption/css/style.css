@@ -1,5 +1,5 @@
 html {
-  background: url(img/bg.jpg) no-repeat center center fixed;
+  background: url(img/bg5.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	background-color: rgba(0,0,0, .85);
+	background-color: rgba(0,0,0, .7);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -22,7 +22,7 @@ body {
 h1 {
 	text-align: center;
 	color: #fff;
-	font-family: 'Handlee', cursive;
+	font-family: 'Signika', sans-serif;
 	font-size: 80px;
   font-weight: 400;
   margin-bottom: 20px;
@@ -35,11 +35,15 @@ h1 {
 input {
 	background-color: transparent;
 	border: none;
-	font-family: 'Lora', serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 38px;
-	width: 320px;
+	width: 735px;
 	margin: 0px;
-	padding-bottom: 0px;
+	padding: 15px;
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+  margin-top: 2%;
+  outline:rgba(255,255,255,.5) solid 1px;
 }
 
 input, select, textarea{
@@ -48,30 +52,42 @@ input, select, textarea{
 	border: none;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, input:hover, textarea:hover {
 	border: none;
-	outline: none;
+	outline: #2296BD solid 1px;
+  background-color: rgba(0,0,0,.5);
 }
 
 ::-webkit-input-placeholder {
-   color: rgba(255,255,255,.5);;
+   color: rgba(255,255,255,.5);
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: rgba(255,255,255,.5);;
+   color: rgba(255,255,255,.5);
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: rgba(255,255,255,.5);;
+   color: rgba(255,255,255,.5);
 }
 
 :-ms-input-placeholder {
-   color: rgba(255,255,255,.5);;
+   color: rgba(255,255,255,.5);
 }
 
 hr {
-	width: 800px;
-	border: 1px solid #2296BD;
+	width: 750px;
+	border: 1px outset #2296BD;
+  margin: none;
+}
+
+.hr-img {
+  border:0;
+  height:50px;
+  width: 500px;
+  margin: 0 auto;
+  background-image:url('img/hr.png');
+  background-repeat: no-repeat;
+  margin-top: 3%;
 }
 
 .fileUpload {
@@ -79,13 +95,13 @@ hr {
     overflow: hidden;
     background-color: transparent;
     color: rgba(255,255,255, .5);
-    font-family: 'Lora', serif;
+    font-family: 'Open Sans', sans-serif;
   	font-size: 38px;
-    border: 2px dashed #2296BD;
-    padding: 100px;
+    border: 2px dashed rgba(255,255,255,.5);
+    padding: 150px;
     background:none;
     display:inline-block;
-    margin-top: 8%;
+    background-color: rgba(0,0,0,.6);
 }
 
 .fileUpload input.upload {
@@ -102,7 +118,8 @@ hr {
 }
 
 .fileUpload:hover {
-    background-color: rgba(255,255,255,.2) ;
+  border: 2px dashed #2296BD;
+  background-color: rgba(0,0,0,.6);
 }
 
 .imgContainer {
@@ -120,12 +137,12 @@ hr {
 
 .fa-clipboard {
   color: rgba(255,255,255, .5);
-  font-family: 'Lora', serif;
+  font-family: 'Open Sans', sans-serif;
 	font-size: 38px;
 }
 
 .container {
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 /* Tags */
