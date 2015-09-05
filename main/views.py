@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, render_to_response
 from django.views.decorators.csrf import csrf_protect
+import requests
+import json
 
 def home(request):
     return render(request, 'index.html')
@@ -12,6 +14,7 @@ def imageUpload(request):
         with open(filename, 'wb') as dest:
             for chunk in file.chunks():
                 dest.write(chunk)
+        tag(file)
         return render(request, 'captions.html', {'image': filename})
     return redirect('main:home')
 
@@ -20,6 +23,18 @@ def imageUpload(request):
 def urlUpload(request):
     if request.method == 'POST':
         url = request.POST.get('url')
-        print(url)
         return render(request, 'captions.html', {'image': url})
     return redirect('main:home')
+
+def tag(file):
+       num_results = 3
+       url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
+       filename = "media/" + str(file.name)
+       fileobject =  open(filename) 
+       payload = {"img_File": fileobject}
+       r = requests.post(url, files=payload, auth=('d5464b55-d77e-4e73-b43c-67047f778cca', 'HxdJIHObW3ON'))
+       response_object=json.loads(r.text)
+       labels=response_object.get('images')[0]['labels']
+       return map(lambda l: l['label_name'], labels[:num_results])
+
+
