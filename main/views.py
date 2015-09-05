@@ -36,7 +36,7 @@ def urlUpload(request):
     return redirect('main:home')
 
 def tag(filename):
-       num_results = 3
+       num_results = 8
        url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
        fileobject =  open(filename) 
        payload = {"img_File": fileobject}
