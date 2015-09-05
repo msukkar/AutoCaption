@@ -208,6 +208,9 @@ hr {
     overflow: hidden;
 }
 
+.tags__inputs input {
+	outline: none;
+}
 .tag-input {
     height: 60px;
     font-size: 26px;
