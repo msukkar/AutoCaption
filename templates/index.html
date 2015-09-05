@@ -3,8 +3,9 @@
   <head>
     <title> AutoCaption </title>
     {% load staticfiles %}
-    <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.css">
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
@@ -13,20 +14,22 @@
   </head>
   <body>
   	<h1> auto<span class="highlight">Caption</span> </h1>
-    <div class="container"> 
-      <form class="form" method="POST" action="{% url 'main:urlUpload' %}">
-        {% csrf_token %}
-        <input class="input-text" name="url" id="url" placeholder="Paste an image url" autofocus>
-        <!-- <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label> -->
-        <input type="submit" hidden>
-      </form>
-      <hr>
+    <div class="container">
+
+    <!--  <hr> -->
       <form action="{% url 'main:imageUpload' %}" method="POST"  id="imageUpload" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="fileUpload btn btn-primary">
           <span> drag/drop a   <i class="fa fa-picture-o"></i> to caption! </span>
           <input type="file" class="upload" id="file" name="file" accept="image/*" value="or upload an image from your computer!">
         </div>
+        <input type="submit" hidden>
+      </form>
+      <hr class="hr-img">
+      <form class="form" method="POST" action="{% url 'main:urlUpload' %}">
+        {% csrf_token %}
+        <input class="input-text" name="url" id="url" placeholder="Paste an image url" autofocus>
+        <!-- <label for="url" class="fa fa-clipboard" rel="tooltip" title="url"></label> -->
         <input type="submit" hidden>
       </form>
     </div>
@@ -37,7 +40,6 @@
       document.getElementById("file").onchange = function() {
         document.getElementById("imageUpload").submit();
       };
-
     </script>
   	<!--<script src="{% static "AutoCaption/js/app.js" %}"></script>
     <script src="{% static "AutoCaption/js/dropzone.js" %}"></script>-->
