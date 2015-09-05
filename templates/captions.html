@@ -11,7 +11,9 @@
   </head>
   <body>
   	<h1 class="margin-top-lg"> auto<span class="highlight">Caption</span> </h1>
-    <img src="{{ image }}" class="img-thumbnail margin-top-sm">
+    <div class="imgContainer">
+      <img src="{{ image }}" class="img-responsive img-thumbnail margin-top-sm">
+    </div>
   <!--	<form action="{% url 'main:imageUpload' %}" method="POST" id="my-awesome-dropzone">
       {% csrf_token %}
     </form> -->

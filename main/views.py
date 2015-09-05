@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, render_to_r
 from django.views.decorators.csrf import csrf_protect
 import requests
 import json
+from django.conf import settings
 
 def home(request):
     return render(request, 'index.html')
@@ -10,11 +11,12 @@ def home(request):
 def imageUpload(request):
     if request.method == 'POST':
         file = request.FILES['file']
-        filename = "static/AutoCaption/css/media/" + file.name
+        filename = str("static/AutoCaption/css/media/" + file.name)
         with open(filename, 'wb') as dest:
             for chunk in file.chunks():
                 dest.write(chunk)
         tag(file)
+        filename = "/" + filename;
         return render(request, 'captions.html', {'image': filename})
     return redirect('main:home')
 
