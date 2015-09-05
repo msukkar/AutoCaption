@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_protect
 import requests
 import json
 import urllib
+import random
 from django.conf import settings
 
 def home(request):
@@ -25,9 +26,13 @@ def imageUpload(request):
 @csrf_protect
 def urlUpload(request):
     if request.method == 'POST':
+        r=random.random()
         url = request.POST.get('url')
-        file = urllib.URLopener()
-        filename = "static/AutoCaption/css/media/temp.jpg"
+        try:
+            file = urllib.URLopener()
+        except Exception, e:
+            print type(e.reason)
+        filename = "static/AutoCaption/css/media/temp#{rand}.jpg"
         file.retrieve(url, filename)
         tags = tag(filename)
         print tags
