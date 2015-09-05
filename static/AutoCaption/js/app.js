@@ -2,11 +2,10 @@ var ready;
 
 ready = function() {
 
-	$("#my-awesome-dropzone").dropzone({ url: "/file/post" });
-
 
 }
 
+var myDropzone = new Dropzone("#my-awesome-dropzone", { url: "/file/post"});
 
 $(document).ready(ready);
 
