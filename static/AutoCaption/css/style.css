@@ -68,8 +68,12 @@ input:focus, textarea:focus {
 }
 
 hr {
-	width: 800px;
-	border: 1px solid #2296BD;
+  border:0;
+  height:50px;
+  width: 500px;
+  margin: 0 auto;
+  background-image:url('img/hr.png');
+  background-repeat: no-repeat;
 }
 
 .fileUpload {
