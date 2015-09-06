@@ -13,6 +13,21 @@ ready = function() {
 
     $('#tag-input-box').bind('keypress', {}, keypressInBox);
 
+    $(document).on('click', '.retry-btn', function() {
+        // Do something, request to django to redirect to homepage?
+
+    });
+
+    $(document).on('click', '.refresh-btn', function() {
+        // Refresh, try something new
+        
+    });
+
+    $(document).on('click', '.up-btn', function() {
+        // Communicate an upvote with server and probably bold the icon
+        
+    });
+
     $(document).on('click', '.btn.glyphicon', function(e) {
         // Remove the tag from list
         var tagName = $(this).parent().text().trim();
@@ -26,6 +41,7 @@ ready = function() {
 
     $(document).on('click', '.caption-btn', function() {
         $('.tags').addClass('hidden', 400);
+        $('.imgContainer').addClass('hidden');
         $('.loading').removeClass('hidden');
         var src = $('.img-responsive.img-thumbnail').attr('src');
         console.log(src);
@@ -39,7 +55,8 @@ ready = function() {
             success: function(result) {
                 $('.caption').removeClass('hidden', 400);
                 $('.caption').text('THIS IS A CAPTION');
-                $('.loading').addClass('hidden');
+                $('.loading').removeClass('hidden');
+                $('.imgContainer').addClass('hidden');
             }
         });
         // .done(function (data) {
