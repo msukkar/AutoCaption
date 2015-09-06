@@ -1,30 +1,44 @@
 var ready;
 
+var tags = [];
+
 ready = function() {
 
     $('#loading-image').hide();
+
+    $('.tag-text').each(function(i, obj) {
+        var text = $(this).text();
+        tags.push(text);
+    });
 
     $('#tag-input-box').bind('keypress', {}, keypressInBox);
 
     $(document).on('click', '.btn.glyphicon', function() {
         // Remove the tag from list
+        var tagName = $(this).parent().text().trim();
+        var index = $.inArray(tagName, tags);
+        tags.splice(index, 1);
         $(this).parent().fadeOut(400);
     });
 
     $(document).on('click', '.caption-btn', function() {
         $('.tags').addClass('hidden', 400);
         $('.loading').removeClass('hidden');
-        $('.dropzone').hide();
+        var src = $('.img-responsive.img-thumbnail').attr('src');
+        console.log(src);
+        var dataObject = { "tags": tags, "imageSource": src }
         $.ajax({
-            url: '../main',
-            success: function() {
-                $('.dropzone').show();
-                $('.caption').removeClass('hidden', 400);
-            },
-            complete: function() {
-                $('.loading').addClass('hidden');
-              }
-          });
+            url: '../submit',
+            type: 'POST',
+            data: dataObject,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+        })
+        .done(function (data) {
+            $('.caption').removeClass('hidden', 400);
+            $('.caption').text('THIS IS A CAPTION');
+            $('.loading').addClass('hidden');
+        });
     });
     // $(".tags__list-of-tags").tagit();
 }
@@ -37,6 +51,7 @@ function keypressInBox(e) {
         if (tag.length > 0) {
 
             // Add the tag to a list of tags to be sent to the captioner?
+            tags.push(tag);
 
             $('<li class=\"tag__container\"><a href=\"#\" class=\"btn glyphicon glyphicon-remove-circle\"></a><span class=\"tag-text\">' + tag + '</span></li>').hide().appendTo('.tags__list-of-tags').fadeIn(400);
             $('#tag-input-box').val('');
