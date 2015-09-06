@@ -3,6 +3,8 @@
   <head>
     <title> AutoCaption </title>
     {% load staticfiles %}
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
@@ -10,12 +12,13 @@
     <!--<link rel="stylesheet" href="{% static "AutoCaption/css/dropzone.css" %}">-->
   </head>
   <body>
-  	<h1 class="margin-top-lg"> auto<span class="highlight">Caption</span> </h1>
+  	<h1> <a href="{% url 'main:home' %}"> auto<span class="highlight">Caption</span> </a></h1>
     <h2> The <span class="highlight">"</span>perfect<span class="highlight">"</span> caption. <span class="highlight"> Every time.</span> <h2>
+    <div class="container">
     <div class="imgContainer">
-      <img src="{{ image }}" class="img-responsive img-thumbnail margin-top-sm">
+      <img src="{{ image }}" class="img-responsive img-thumbnail">
     </div>
-    <div class="tags margin-top-sm">
+    <div class="tags">
       <ul class="tags__list-of-tags">
         {% if tags %}
           {% for tag in tags %}
@@ -28,17 +31,19 @@
       </ul>
       <div class="input-and-caption">
         <form class="tags__inputs">
-          <input type="text" autocomplete="off" autocorrect="off" placeholder="Type in a few tags" autocapitalize="off" spellcheck="false" class="tag-input" id="tag-input-box" required="" autofocus="true">
+          <input type="text" autocomplete="off" autocorrect="off" placeholder="Add more tags" autocapitalize="off" spellcheck="false" class="tag-input" id="tag-input-box" required="" autofocus="true">
         </form>
-        <button class="btn btn-default caption-btn">Caption!</button>
+        <button class="btn btn-primary caption-btn">Get Caption!</button>
       </div>
     </div>
+  </div>
     <div class="loading hidden">
     </div>
     <div class="caption hidden">
       <span>This is the caption</span>
     </div>
-
+    <div class="see-thru">
+    </div>
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	  <!--<script src="{% static "AutoCaption/js/dropzone.js" %}"></script>-->
   	<script src="{% static "AutoCaption/js/bootstrap.min.js" %}"></script>
