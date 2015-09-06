@@ -6,6 +6,6 @@ urlpatterns = patterns('main.views',
     url(r'^$', 'home', name='home'),
     url(r'^imageUpload/$', 'imageUpload', name='imageUpload'),
     url(r'^urlUpload/$', 'urlUpload', name='urlUpload'),
-    url(r'^submit/$', 'submitTags', name='submitTags')
+    url(r'^submitTags/$', 'submitTags', name='submitTags')
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

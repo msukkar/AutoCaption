@@ -38,7 +38,6 @@ def urlUpload(request):
         filename = "static/AutoCaption/css/media/temp"+str(r)+".jpg"
         file.retrieve(url, filename)
         tags = tag(filename)
-        print tags
         filename = "/" +filename
         return render(request, 'captions.html', {'image': filename, 'tags':tags})
     return redirect('main:home')
@@ -54,10 +53,15 @@ def tag(filename):
        return map(lambda l: l['label_name'], labels[:num_results])
 
 def submitTags(req):
-    url="https://search-autocaptioner2-mt53ysx27b6wvyfayjynpq6odu.us-east-1.cloudsearch.amazonaws.com/2013-01-01/search?q=golf&size=10"
+    url="https://search-autocaptioner2-mt53ysx27b6wvyfayjynpq6odu.us-east-1.cloudsearch.amazonaws.com/2013-01-01/search?size=10&q="
     keywords=""
     if req.is_ajax():
         if req.method == 'POST':
+            keywords=' | '.join(json.loads(req.body)['tags'])
+            url=url+keywords
             j=json.loads(requests.get(url).text)
-            m = map(lambda l: l['fields']['quote'], j['hits']['hit']) 
-    return render(request, 'captions.html', {"captions": m, "image:" filename})
+            print j
+            m = map(lambda l: l['fields']['quote'], j['hits']['hit'])
+            print m
+            return render(req, 'captions.html', {'captions': m})
+    return redirect('main:home')
