@@ -1,2 +1,4 @@
 # AutoCaption
-Our PennApps project. Auto-captions photos. Very much a work in progress
+## The "perfect" caption. Every time. 
+The webapp that provides relevant and intriguing captions for your pictures. 
+
