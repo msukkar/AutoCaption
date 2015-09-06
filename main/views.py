@@ -43,25 +43,33 @@ def urlUpload(request):
     return redirect('main:home')
 
 def tag(filename):
-       num_results = 3
-       url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
+       num_results = 4
+       watson_url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
+       imagga_url="https://api.imagga.com/v1/tagging?url=http://www.autocaption.co/"+filename
        fileobject =  open(filename) 
+       print filename
        payload = {"img_File": fileobject}
-       r = requests.post(url, files=payload, auth=('d5464b55-d77e-4e73-b43c-67047f778cca', 'HxdJIHObW3ON'))
+       r = requests.post(watson_url, files=payload, auth=('d5464b55-d77e-4e73-b43c-67047f778cca', 'HxdJIHObW3ON'))
+       r_imagga = requests.get(imagga_url, headers={"Authorization":"Basic YWNjX2FhMTFiMTFhZWQ5Zjk4NjpkMjY0NmQxZjVjZDY4YjE2YjNmMTQ5ZWZiODlkODcxNQ=="})
+       imagga_response_object = json.loads(r_imagga.text)
        response_object=json.loads(r.text)
        labels=response_object.get('images')[0]['labels']
-       return map(lambda l: l['label_name'], labels[:num_results])
+       imagga_labels = ""
+       if len(imagga_response_object.get('results'))>0:
+        imagga_labels=imagga_response_object.get('results')[0]['tags']
+       results=map(lambda l: l['label_name'], labels[:num_results/2])
+       imagga_results = map(lambda l: l['tag'].title(), imagga_labels[:num_results/2])
+       return list(set(results) | set(imagga_results))
 
 def submitTags(req):
     url="https://search-autocaptioner2-mt53ysx27b6wvyfayjynpq6odu.us-east-1.cloudsearch.amazonaws.com/2013-01-01/search?size=10&q="
     keywords=""
     if req.is_ajax():
         if req.method == 'POST':
-            keywords=' | '.join(json.loads(req.body)['tags'])
+            body_json=json.loads(req.body)
+            keywords=' | '.join(body_json['tags'])
             url=url+keywords
             j=json.loads(requests.get(url).text)
-            print j
             m = map(lambda l: l['fields']['quote'], j['hits']['hit'])
-            print m
-            return render(req, 'captions.html', {'captions': m})
+            return render(req, 'display.html', {'captions': m, 'imageSource': body_json['image_source']})
     return redirect('main:home')
