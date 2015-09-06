@@ -61,7 +61,7 @@ function keypressInBox(e) {
             // Add the tag to a list of tags to be sent to the captioner?
             tags.push(tag);
 
-            $('<li class=\"tag__container\"><a href=\"#\" class=\"btn glyphicon glyphicon-remove-circle\"></a><span class=\"tag-text\">' + tag + '</span></li>').hide().appendTo('.tags__list-of-tags').fadeIn(400);
+            $('<li class=\"tag__container\"><a href=\"#\" class=\"btn glyphicon glyphicon-remove\"></a><span class=\"tag-text\">' + tag + '</span></li>').hide().appendTo('.tags__list-of-tags').fadeIn(400);
             $('#tag-input-box').val('');
         }
         // $(".tags__inputs").submit();
