@@ -14,9 +14,12 @@ def imageUpload(request):
     if request.method == 'POST':
         file = request.FILES['file']
         filename = str("static/AutoCaption/css/media/" + file.name)
-        with open(filename, 'wb') as dest:
-            for chunk in file.chunks():
-                dest.write(chunk)
+        try:
+            with open(filename, 'wb') as dest:
+                for chunk in file.chunks():
+                    dest.write(chunk)
+        except Exception, e:
+            print type(e.reason)
         tags = tag(filename)
         filename = "/" + filename;
         return render(request, 'captions.html', {'image': filename, 'tags': tags})
@@ -35,13 +38,12 @@ def urlUpload(request):
         filename = "static/AutoCaption/css/media/temp"+str(r)+".jpg"
         file.retrieve(url, filename)
         tags = tag(filename)
-        print tags
         filename = "/" +filename
         return render(request, 'captions.html', {'image': filename, 'tags':tags})
     return redirect('main:home')
 
 def tag(filename):
-       num_results = 8
+       num_results = 3
        url = "https://gateway.watsonplatform.net/visual-recognition-beta/api/v1/tag/recognize"
        fileobject =  open(filename) 
        payload = {"img_File": fileobject}
@@ -50,4 +52,16 @@ def tag(filename):
        labels=response_object.get('images')[0]['labels']
        return map(lambda l: l['label_name'], labels[:num_results])
 
-
+def submitTags(req):
+    url="https://search-autocaptioner2-mt53ysx27b6wvyfayjynpq6odu.us-east-1.cloudsearch.amazonaws.com/2013-01-01/search?size=10&q="
+    keywords=""
+    if req.is_ajax():
+        if req.method == 'POST':
+            keywords=' | '.join(json.loads(req.body)['tags'])
+            url=url+keywords
+            j=json.loads(requests.get(url).text)
+            print j
+            m = map(lambda l: l['fields']['quote'], j['hits']['hit'])
+            print m
+            return render(req, 'captions.html', {'captions': m})
+    return redirect('main:home')

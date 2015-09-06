@@ -3,6 +3,21 @@ var ready;
 var tags = [];
 
 ready = function() {
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
     $('#loading-image').hide();
 
@@ -44,12 +59,18 @@ ready = function() {
         $('.imgContainer').addClass('hidden');
         $('.loading').removeClass('hidden');
         var src = $('.img-responsive.img-thumbnail').attr('src');
-        console.log(src);
-        var dataObject = { "tags": tags, "imageSource": src };
+        var dataObject = { "tags": tags, "imageSource": src }
+
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+        });
         $.ajax({
-            url: '../submitTags',
+            url: '../submitTags/',
             type: 'POST',
-            data: dataObject,
+            data: JSON.stringify(dataObject),
             dataType: 'json',
             contentType: 'application/json',
             success: function(result) {
@@ -59,6 +80,7 @@ ready = function() {
                 $('.imgContainer').addClass('hidden');
             }
         });
+
         // .done(function (data) {
         //     $('.caption').removeClass('hidden', 400);
         //     $('.caption').text('THIS IS A CAPTION');
