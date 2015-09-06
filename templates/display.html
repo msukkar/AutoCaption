@@ -5,7 +5,7 @@
     {% load staticfiles %}
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
 
@@ -15,41 +15,23 @@
   	<h1> <a href="{% url 'main:home' %}"> auto<span class="highlight">Caption</span> </a></h1>
     <h2> The <span class="highlight">"</span>perfect<span class="highlight">"</span> caption. <span class="highlight"> Every time.</span> </h2>
     <div class="container">
-    <div class="imgContainer">
-      <img src="{{ image }}" class="img-responsive">
-    </div>
-    <div class="tags">
-      <ul class="tags__list-of-tags">
-        {% if tags %}
-          {% for tag in tags %}
-            <li class="tag__container">
-              <a href="#" class="btn glyphicon glyphicon-remove"></a>
-              <span class="tag-text">{{tag}}</span>
-            </li>
-          {% endfor %}
+      <div class="imgContainer">
+        {% if image %}
+          <img src="{{ image }}" class="img-responsive">
         {% endif %}
-      </ul>
-      <div class="input-and-caption">
-        <form class="tags__inputs">
-          <input type="text" autocomplete="off" autocorrect="off" placeholder="Add more tags" autocapitalize="off" spellcheck="false" class="tag-input" id="tag-input-box" required="" autofocus="true">
-        </form>
-        <button class="btn btn-primary caption-btn">autoCaption!</button>
       </div>
-      <div class="caption-container hidden">
-        <div class="caption well"></div>
-        <div class="caption-btn-group btn-group">
+      <div class="caption">
+          {% if captions %}
+            <span class="caption-text">{{captions}}</span>
+          {% endif %}
           <button class="btn glyphicon glyphicon-thumbs-up up-btn"></button>
           <button class="btn glyphicon glyphicon-refresh refresh-btn"></button>
-          <button type="submit" onclick="$('.form').submit()" class="btn another-btn">Try another image!</button>
-          <form class="form" hidden method="POST" action="{% url 'main:home' %}">
-            {% csrf_token %}
-          </form>
-        </div>
       </div>
+      <button class="btn btn-primary retry-btn">Try again</button>
+
     </div>
-  </div>
-<!--     <div class="loading hidden">
-    </div> -->
+    <div class="loading hidden">
+    </div>
     <div class="see-thru">
     </div>
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

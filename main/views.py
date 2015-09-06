@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect, render_to_response
+from django.shortcuts import render, HttpResponseRedirect, redirect, render_to_response, HttpResponse
 from django.views.decorators.csrf import csrf_protect
 import requests
 import json
@@ -55,13 +55,17 @@ def tag(filename):
 def submitTags(req):
     url="https://search-autocaptioner2-mt53ysx27b6wvyfayjynpq6odu.us-east-1.cloudsearch.amazonaws.com/2013-01-01/search?size=10&q="
     keywords=""
+    print req
     if req.is_ajax():
+    	print "We're ajaxing it up"
         if req.method == 'POST':
             keywords=' | '.join(json.loads(req.body)['tags'])
             url=url+keywords
             j=json.loads(requests.get(url).text)
             print j
             m = map(lambda l: l['fields']['quote'], j['hits']['hit'])
-            print m
-            return render(req, 'captions.html', {'captions': m})
+            # print m
+            # return render(req, 'display.html', {'captions': m})
+            return HttpResponse(json.dumps([m]))
+        return redirect('main:home')
     return redirect('main:home')
