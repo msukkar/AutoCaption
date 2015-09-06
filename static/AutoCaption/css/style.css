@@ -4,6 +4,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  z-index: -1;
 }
 
 body {
@@ -35,12 +36,13 @@ h1 {
 }
 
 h2 {
-  color: rgba(255,255,255,.7);
+  color: rgba(255,255,255,.65);
   text-align: center;
   font-family: 'Signika', sans-serif;
 	font-size: 30px;
   font-weight: 400;
   margin-top: 0px;
+  margin-bottom: 2%;
   letter-spacing: 1px;
 }
 
@@ -64,10 +66,10 @@ input {
 	font-size: 38px;
 	width: 735px;
 	margin: 0px;
+  margin-top: 3%;
 	padding: 15px;
   text-align: center;
-  background-color: rgba(0,0,0,.5);
-  margin-top: 2%;
+  background-color: rgba(0,0,0,.3);
 }
 
 input, select, textarea{
@@ -78,7 +80,7 @@ input, select, textarea{
 
 input:focus, textarea:focus, input:hover, textarea:hover {
 	border: none;
-	outline: #2296BD solid 1px;
+  outline: rgba(34, 150, 189, .1) solid 3px;
   background-color: rgba(0,0,0,.5);
 }
 
@@ -118,10 +120,10 @@ hr {
     position: relative;
     overflow: hidden;
     background-color: transparent;
-    color: rgba(255,255,255, .5);
+    color: rgba(255,255,255,.65);
     font-family: 'Open Sans', sans-serif;
   	font-size: 38px;
-    border: 2px dashed rgba(255,255,255,.5);
+    border: 4px dashed rgba(255,255,255,.35);
     padding: 150px;
     background:none;
     display:inline-block;
@@ -143,21 +145,25 @@ hr {
 }
 
 .fileUpload:hover {
-  border: 2px dashed #2296BD;
+  border: 4px dashed rgba(34, 150, 189, .4);
   background-color: rgba(0,0,0,.5);
 }
 
 .imgContainer {
   margin: 0 auto;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0px;
 }
 
 .imgContainer img{
-  max-height: 400px;
+  max-height: 350px;
 }
 
-.img-thumbnail {
-	border: 3px solid #2296BD;
+.img-responsive {
   padding: 0px;
+  margin: 0 auto;
+  max-height: 350px;
 }
 
 .fa-clipboard {
@@ -173,7 +179,7 @@ hr {
 /* Tags */
 
 .tags {
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 .tag__container {
@@ -244,7 +250,7 @@ hr {
 }
 
 .tags__inputs input:hover, .tags__inputs input:focus {
-  outline:  #2296BD solid 1px;
+  outline: rgba(34, 150, 189, .1) solid 3px;
 }
 
 .tag-text {
@@ -262,8 +268,8 @@ hr {
 .caption-btn {
     height: 100%;
     background-color: #2296BD;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 26px;
+    font-family: 'Signika', sans-serif;
+    font-size: 35px;
     width: 100%;
     margin-top: 1%;
     padding: 20px;
