@@ -35,12 +35,15 @@
         </form>
         <button class="btn btn-primary caption-btn">autoCaption!</button>
       </div>
-      <div class="caption-container hidden"> 
+      <div class="caption-container hidden">
         <div class="caption well"></div>
         <div class="caption-btn-group btn-group">
           <button class="btn glyphicon glyphicon-thumbs-up up-btn"></button>
           <button class="btn glyphicon glyphicon-refresh refresh-btn"></button>
-          <button class="btn another-btn">Try another image!</button>s
+          <button type="submit" onclick="$('.form').submit()" class="btn another-btn">Try another image!</button>
+          <form class="form" hidden method="POST" action="{% url 'main:home' %}">
+            {% csrf_token %}
+          </form>
         </div>
       </div>
     </div>

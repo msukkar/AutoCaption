@@ -51,7 +51,7 @@ a {
   color: #fff;
 }
 
-a:hover, a:visited, a:focus {
+a:hover, a:visited, a:active {
   text-decoration: none;
   color: #fff;
 }
@@ -78,7 +78,7 @@ input, select, textarea{
 	border: none;
 }
 
-input:focus, textarea:focus, input:hover, textarea:hover {
+input:active, textarea:active, input:hover, textarea:hover {
 	border: none;
   outline: rgba(34, 150, 189, .1) solid 3px;
   background-color: rgba(0,0,0,.5);
@@ -249,7 +249,7 @@ hr {
     background-color: rgba(0, 0, 0, .4) !important;
 }
 
-.tags__inputs input:hover, .tags__inputs input:focus {
+.tags__inputs input:hover, .tags__inputs input:active {
   outline: rgba(34, 150, 189, .1) solid 3px;
 }
 
@@ -276,7 +276,7 @@ hr {
     max-width: 500px;
 }
 
-.caption-btn:hover, .up-btn:hover, .refresh-btn:hover, .another-btn:hover, .caption-btn:active, .up-btn:active, .refresh-btn:active, .another-btn:active{
+.caption-btn:hover, .up-btn:hover, .refresh-btn:hover, .another-btn:hover {
   background-color: rgba(34, 150, 189, .7);
   border: 1px outset rgba(34, 150, 189, .3);
   color: #FFF;
@@ -366,11 +366,11 @@ hr {
 
 
 /**** Captions ****/
-.caption-container { 
-	
+.caption-container {
+
 }
 
-.caption { 
+.caption {
 	margin: 0 auto;
 	margin-top: 3%;
 	background-color: rgba(0, 0, 0, .4);
@@ -382,7 +382,7 @@ hr {
     border: none;
 }
 
-.caption:hover { 
+.caption:hover {
 	outline: rgba(34, 150, 189, .1) solid 3px;
 }
 
@@ -394,7 +394,7 @@ hr {
 
 }
 
-.up-btn, .refresh-btn { 
+.up-btn, .refresh-btn {
 	border: 1px solid rgba(255,255,255,.3);
 	font-size: 30px;
 	color: #FFF;
@@ -404,8 +404,15 @@ hr {
 	padding-right: 30px;
 }
 
-.another-btn { 
-	color: #fff;
+.refresh-btn:focus, .another-btn:focus {
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: none;
+  outline: none;
+  color: #fff;
+}
+
+.another-btn {
+	color: #fff !important;
 	border: 1px solid rgba(255,255,255,.3);
 	background-color: rgba(34, 150, 189, .3);
 	margin-top: 1px;
