@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html lang=en>
   <head>
     <title> AutoCaption </title>
     {% load staticfiles %}
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "AutoCaption/css/style.css" %}">
 
@@ -15,11 +16,13 @@
     <h2> The <span class="highlight">"</span>perfect<span class="highlight">"</span> caption. <span class="highlight"> Every time.</span> </h2>
     <div class="container">
       <div class="imgContainer">
-        <img src="{{ image }}" class="img-responsive">
+        {% if image %}
+          <img src="{{ image }}" class="img-responsive">
+        {% endif %}
       </div>
       <div class="caption">
-          {% if caption %}
-            <span class="caption-text">{{caption}}</span>
+          {% if captions %}
+            <span class="caption-text">{{captions}}</span>
           {% endif %}
           <button class="btn glyphicon glyphicon-thumbs-up up-btn"></button>
           <button class="btn glyphicon glyphicon-refresh refresh-btn"></button>

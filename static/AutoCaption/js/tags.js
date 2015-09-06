@@ -2,6 +2,9 @@ var ready;
 
 var tags = [];
 
+var captions = [];
+var currentCaption = 0;
+
 ready = function() {
     function getCookie(name) {
         var cookieValue = null;
@@ -34,6 +37,9 @@ ready = function() {
     });
 
     $(document).on('click', '.refresh-btn', function() {
+        currentCaption += 1;
+        $('.caption').html(captions[currentCaption]);
+        $('.caption-btn-group').attr('display', 'inline-block');
         // Refresh, try something new
         
     });
@@ -55,11 +61,12 @@ ready = function() {
     });
 
     $(document).on('click', '.caption-btn', function() {
+        var src = $('.img-responsive').attr('src');
+        var dataObject = { "tags": tags, "imageSource": src }
         $('.tags').addClass('hidden', 400);
         $('.imgContainer').addClass('hidden');
         $('.loading').removeClass('hidden');
-        var src = $('.img-responsive.img-thumbnail').attr('src');
-        var dataObject = { "tags": tags, "imageSource": src }
+        
 
         var csrftoken = getCookie('csrftoken');
         $.ajaxSetup({
@@ -73,11 +80,21 @@ ready = function() {
             data: JSON.stringify(dataObject),
             dataType: 'json',
             contentType: 'application/json',
-            success: function(result) {
-                $('.caption').removeClass('hidden', 400);
-                $('.caption').text('THIS IS A CAPTION');
-                $('.loading').removeClass('hidden');
-                $('.imgContainer').addClass('hidden');
+            success: function(data) {
+                captions = data[0];
+                var currentCaption = 0;
+                $('.tags').removeClass('hidden', 400);
+                $('.tags__list-of-tags').addClass('hidden');
+                $('.imgContainer').removeClass('hidden');
+                $('.loading').addClass('hidden');
+                $('.input-and-caption').addClass('hidden');
+                $('.caption-container').removeClass('hidden');
+                $('.caption').html(captions[currentCaption]);
+                // console.log("ITS DONE!");
+                // $('.caption').removeClass('hidden', 400);
+                // $('.caption').text('THIS IS A CAPTION');
+                // $('.loading').removeClass('hidden');
+                // $('.imgContainer').addClass('hidden');
             }
         });
 

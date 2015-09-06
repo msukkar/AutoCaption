@@ -267,7 +267,7 @@ hr {
 
 .caption-btn {
     height: 100%;
-    background-color: #2296BD;
+    background-color: rgba(34, 150, 189, .3);
     font-family: 'Signika', sans-serif;
     font-size: 35px;
     width: 100%;
@@ -276,9 +276,10 @@ hr {
     max-width: 500px;
 }
 
-.caption-btn:hover {
-  background-color: #2296BD;
-  border: 1px outset #2296BD;
+.caption-btn:hover, .up-btn:hover, .refresh-btn:hover, .another-btn:hover, .caption-btn:active, .up-btn:active, .refresh-btn:active, .another-btn:active{
+  background-color: rgba(34, 150, 189, .7);
+  border: 1px outset rgba(34, 150, 189, .3);
+  color: #FFF;
 }
 
 .tags__inputs input {
@@ -361,4 +362,56 @@ hr {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+/**** Captions ****/
+.caption-container { 
+	
+}
+
+.caption { 
+	margin: 0 auto;
+	margin-top: 3%;
+	background-color: rgba(0, 0, 0, .4);
+	font-weight: 300;
+	font-size: 26px;
+    width: 100%;
+    max-width: 500px;
+    color: #FFF;
+    border: none;
+}
+
+.caption:hover { 
+	outline: rgba(34, 150, 189, .1) solid 3px;
+}
+
+.caption-btn-group {
+	text-align: center;
+	margin-top: 3%;
+	max-width: 500px;
+	width: 100%;
+
+}
+
+.up-btn, .refresh-btn { 
+	border: 1px solid rgba(255,255,255,.3);
+	font-size: 30px;
+	color: #FFF;
+	background-color: rgba(34, 150, 189, .3);
+	padding: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.another-btn { 
+	color: #fff;
+	border: 1px solid rgba(255,255,255,.3);
+	background-color: rgba(34, 150, 189, .3);
+	margin-top: 1px;
+	padding: 20px;
+	padding-left: 38px;
+	padding-right: 38px;
+	font-family: 'Signika', sans-serif;
+    font-size: 30px;
 }
