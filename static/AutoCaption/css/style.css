@@ -184,7 +184,7 @@ hr {
     text-align: center;
     display: flex;
     align-items: center;
-    flex-flow: column;
+    flex-flow: row-reverse;
     justify-content: center;
     background-color: azure;
     border-radius: 4px;
@@ -199,19 +199,17 @@ hr {
 	opacity: 1;
 }
 
-.btn.glyphicon.glyphicon-remove-circle {
-    opacity: 0;
-    font-size: .85em;
+.btn.glyphicon.glyphicon-remove {
+    font-size: .60em;
     line-height: 1;
-    position: absolute;
-    /*width: 25%;*/
     padding: 0px;
     text-align: right;
-    top: -12px;
-    right: -10px;
     text-decoration: none!important;
     transition: opacity 0.3s ease;
-    color: #2296BD;
+ /*   color: #2296BD;*/
+ 	color: rgba(0,0,0, .5);
+ 	margin-top: -2px;
+ 	margin-left: 3px;
 }
 
 /*.btn.glyphicon.glyphicon-remove-circle:hover {

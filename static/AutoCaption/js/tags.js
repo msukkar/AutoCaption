@@ -13,12 +13,15 @@ ready = function() {
 
     $('#tag-input-box').bind('keypress', {}, keypressInBox);
 
-    $(document).on('click', '.btn.glyphicon', function() {
+    $(document).on('click', '.btn.glyphicon', function(e) {
         // Remove the tag from list
         var tagName = $(this).parent().text().trim();
         var index = $.inArray(tagName, tags);
         tags.splice(index, 1);
         $(this).parent().fadeOut(400);
+        return false;
+        e.preventDefault();
+
     });
 
     $(document).on('click', '.caption-btn', function() {
@@ -26,13 +29,13 @@ ready = function() {
         $('.loading').removeClass('hidden');
         var src = $('.img-responsive.img-thumbnail').attr('src');
         console.log(src);
-        var dataObject = { "tags": tags, "imageSource": src }
+        var dataObject = { "tags": tags, "imageSource": src };
         $.ajax({
             url: '../submitTags',
             type: 'POST',
             data: dataObject,
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+            contentType: 'application/json',
             success: function(result) {
                 $('.caption').removeClass('hidden', 400);
                 $('.caption').text('THIS IS A CAPTION');
