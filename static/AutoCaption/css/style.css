@@ -31,6 +31,7 @@ h1 {
 	font-size: 80px;
   font-weight: 400;
   margin-bottom: 5px;
+  margin-top: 53px;
 }
 
 h2 {
@@ -40,8 +41,17 @@ h2 {
 	font-size: 30px;
   font-weight: 400;
   margin-top: 0px;
-  margin-bottom: 20px;
   letter-spacing: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover, a:visited, a:focus {
+  text-decoration: none;
+  color: #fff;
 }
 
 .highlight {
@@ -139,7 +149,6 @@ hr {
 
 .imgContainer {
   margin: 0 auto;
-  margin-top: 2%;
 }
 
 .imgContainer img{
@@ -158,7 +167,7 @@ hr {
 }
 
 .container {
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 /* Tags */
@@ -219,19 +228,25 @@ hr {
 }
 
 .tags__inputs {
-    max-width: 500px;
-    overflow: hidden;
 }
 
 .tags__inputs input {
 	outline: none;
+  margin-top: 2%;
 }
 .tag-input {
     height: 60px;
     font-size: 26px;
     line-height: 50px;
     font-weight: 300;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, .4) !important;
+}
 
+.tags__inputs input:hover, .tags__inputs input:focus {
+  outline:  #2296BD solid 1px;
 }
 
 .tag-text {
@@ -240,17 +255,26 @@ hr {
 }
 
 .input-and-caption {
-    max-width: 400px;
     margin: 0 auto;
-    display: flex;
     justify-content: space-between;
     margin-top: 10px;
     align-items: center;
 }
 
 .caption-btn {
-    margin: 0px 0px;
     height: 100%;
+    background-color: #2296BD;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    width: 100%;
+    margin-top: 1%;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.caption-btn:hover {
+  background-color: #2296BD;
+  border: 1px outset #2296BD;
 }
 
 .tags__inputs input {
