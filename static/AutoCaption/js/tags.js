@@ -28,17 +28,22 @@ ready = function() {
         console.log(src);
         var dataObject = { "tags": tags, "imageSource": src }
         $.ajax({
-            url: '../submit',
+            url: '../submitTags',
             type: 'POST',
             data: dataObject,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-        })
-        .done(function (data) {
-            $('.caption').removeClass('hidden', 400);
-            $('.caption').text('THIS IS A CAPTION');
-            $('.loading').addClass('hidden');
+            success: function(result) {
+                $('.caption').removeClass('hidden', 400);
+                $('.caption').text('THIS IS A CAPTION');
+                $('.loading').addClass('hidden');
+            }
         });
+        // .done(function (data) {
+        //     $('.caption').removeClass('hidden', 400);
+        //     $('.caption').text('THIS IS A CAPTION');
+        //     $('.loading').addClass('hidden');
+        // });
     });
     // $(".tags__list-of-tags").tagit();
 }
