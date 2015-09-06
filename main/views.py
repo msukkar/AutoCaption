@@ -32,7 +32,7 @@ def urlUpload(request):
             file = urllib.URLopener()
         except Exception, e:
             print type(e.reason)
-        filename = "static/AutoCaption/css/media/temp#{rand}.jpg"
+        filename = "static/AutoCaption/css/media/temp"+str(r)+".jpg"
         file.retrieve(url, filename)
         tags = tag(filename)
         print tags
